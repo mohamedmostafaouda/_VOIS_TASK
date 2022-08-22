@@ -1,11 +1,11 @@
 @mixin light {
-    --purple: purple;
-    --white: #fff;
-    --gray: #fff;
-    --blue: blue;
-    --light-blue: blue;
-    --dark-blue: blue;
-    --red: red;
+    --purple: #8a5ea9;
+    --white: #ffffff;
+    --gray: #f5f6fa;
+    --blue: #3ca6db;
+    --light-blue: #8dd0fa;
+    --dark-blue: #5a9fcc;
+    --red: #e8707d;
 }
 
 @mixin dark {
@@ -36,5 +36,4 @@ body.dark {
     body.light {
         @include light();
     }
-
 }

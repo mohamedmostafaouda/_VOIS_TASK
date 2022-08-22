@@ -7,10 +7,12 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
+    "strict": true,
     "allowJs": true,
     "moduleResolution": "node",
     "paths": {
-      "@colors": ["styles/_colors.scss"]
+      "@colors": ["styles/_colors.scss"],
+      "@components": ["components/*"]
     }
   }
 }
