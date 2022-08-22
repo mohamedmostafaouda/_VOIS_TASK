@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styles from '../src/app.module.scss';
+import { useTranslation } from 'react-i18next';
 
 function App() {
-  const x = 12;
-  return <div className={styles.name}>{'react setup from scratch without cra testing ts'}</div>;
+  const { t } = useTranslation('');
+  return <div className={styles.name}>{t(`hello`)}</div>;
 }
 export default App;

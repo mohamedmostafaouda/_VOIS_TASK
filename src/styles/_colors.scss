@@ -1,0 +1,40 @@
+@mixin light {
+    --purple: purple;
+    --white: #fff;
+    --gray: #fff;
+    --blue: blue;
+    --light-blue: blue;
+    --dark-blue: blue;
+    --red: red;
+}
+
+@mixin dark {
+    --purple: #FFF;
+    --white: #fff;
+    --gray: #fff;
+    --blue: blue;
+    --light-blue: blue;
+    --dark-blue: blue;
+    --red: red;
+}
+
+
+body {
+    @include light();
+}
+
+body.dark {
+    @include dark();
+}
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        @include dark()
+    }
+
+    body.light {
+        @include light();
+    }
+
+}
