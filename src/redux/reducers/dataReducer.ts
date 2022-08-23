@@ -23,7 +23,6 @@ const initialState: DataState = {
 };
 
 export const dataReducer = (state = initialState, action: any): DataState => {
-  
   switch (action.type) {
     case ActionTypes.GET_DATA: {
       const data: Data[] = action.payload;
@@ -51,12 +50,22 @@ export const dataReducer = (state = initialState, action: any): DataState => {
     }
 
     case FilterActionTypes.CHANGE_COUNTRY: {
+      const currentCampValue = state[FilterType.CAMP_FILTER].filterValue;
+      const currentSchool = state[FilterType.SCHOOL_FILTER].filterValue;
       const countryFilter = { ...state.COUNTRY_FILTER, filterValue: action.payload };
-      const campFilter = filterCamps(state.data, { country: countryFilter.filterValue });
-      const schoolFilter = filterSchools(state.data, {
-        country: countryFilter.filterValue,
-        camp: campFilter.filterValue,
-      });
+      const campFilter = filterCamps(
+        state.data,
+        { country: countryFilter.filterValue },
+        currentCampValue,
+      );
+      const schoolFilter = filterSchools(
+        state.data,
+        {
+          country: countryFilter.filterValue,
+          camp: campFilter.filterValue,
+        },
+        currentSchool,
+      );
 
       return {
         ...state,
@@ -67,11 +76,16 @@ export const dataReducer = (state = initialState, action: any): DataState => {
     }
 
     case FilterActionTypes.CHANGE_CAMP: {
+      const currentSchoolValue = state[FilterType.SCHOOL_FILTER].filterValue;
       const campFilter = { ...state[FilterType.CAMP_FILTER], filterValue: action.payload };
-      const schoolFilter = filterSchools(state.data, {
-        country: state[FilterType.COUNTRY_FILTER].filterValue,
-        camp: campFilter.filterValue,
-      });
+      const schoolFilter = filterSchools(
+        state.data,
+        {
+          country: state[FilterType.COUNTRY_FILTER].filterValue,
+          camp: campFilter.filterValue,
+        },
+        currentSchoolValue,
+      );
 
       return {
         ...state,
@@ -79,13 +93,17 @@ export const dataReducer = (state = initialState, action: any): DataState => {
         [FilterType.SCHOOL_FILTER]: schoolFilter,
       };
     }
-    
+
     case FilterActionTypes.CHANGE_SCHOOL: {
       return {
         ...state,
-        [FilterType.SCHOOL_FILTER]: {...state[FilterType.SCHOOL_FILTER], filterValue: action.payload},
+        [FilterType.SCHOOL_FILTER]: {
+          ...state[FilterType.SCHOOL_FILTER],
+          filterValue: action.payload,
+        },
       };
     }
+
     default:
       return initialState;
   }
