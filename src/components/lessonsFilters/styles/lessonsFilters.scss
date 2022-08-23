@@ -1,0 +1,11 @@
+@import '@variables';
+
+.mainTitle{
+    font-size: $secondary-text;
+    color: var(--purple);
+}
+
+.dropdownsContainer{
+    display: flex;
+    justify-content: space-between;
+}

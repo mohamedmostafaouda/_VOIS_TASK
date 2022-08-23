@@ -1,12 +1,7 @@
-.title {
-    color: var(--purple);
-    font-weight: normal;
-    margin: 2rem;
-}
-
 .mainContainer{
     overflow: auto;
     background-color: var(--gray);
     width: 100%;
     height: 100vh;
+    padding: 1rem 2rem;
 }

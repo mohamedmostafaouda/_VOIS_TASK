@@ -1,3 +1,54 @@
-.dropdownContainer{
+@import '@variables';
+
+$dropdown-border-size: 0.1rem;
+
+.label {
+    color: var(--dark-gray);
+    font-size: 0.8rem;
+}
+
+.dropdownSelectorContainer {
+    display: inline-block;
+    margin-left: $secondary-spacing;
+    width: 15rem;
     background-color: var(--blue);
+    border: $dropdown-border-size solid var(--light-blue);
+    padding: $secondary-spacing;
+    color: var(--dark-blue);
+    position: relative;
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.optionsContainer {
+    background-color: var(--blue);
+    position: absolute;
+    width: calc(100% + ($dropdown-border-size * 2));
+    left: calc(0rem - $dropdown-border-size);
+    margin-top: 0.8rem;
+}
+
+.option {
+    color: var(--dark-blue);
+    padding: $secondary-spacing;
+    &:hover{
+        background-color: var(--dark-blue);
+        color: var(--white);
+    }
+}
+
+.dropdownHeroItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.openedArrow {
+    transform: rotate(-270deg);
 }

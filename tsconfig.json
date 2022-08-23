@@ -11,8 +11,11 @@
     "allowJs": true,
     "moduleResolution": "node",
     "paths": {
-      "@colors": ["styles/_colors.scss"],
-      "@components": ["components/*"]
+      "@components/*": ["components/*"],
+      "@components": ["components/index.ts"],
+      "@variables": ["styles/_variables.scss"],
+      "@redux/*": ["redux/*"],
+      "@types": ["types.ts"]
     }
   }
 }
