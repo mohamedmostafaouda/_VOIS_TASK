@@ -7,14 +7,15 @@ import { LoadingScreen } from '@components/loadingScreen/loadingScreen';
 
 export const MainPage = () => {
   const dispatch = useAppDispatch();
-  const result:any = useAppSelector((state) => state);
+  const { loaded } = useAppSelector((state) => state.data);
+
   React.useEffect(() => {
     dispatch(getData() as any);
   }, []);
 
   return (
     <div>
-      {!result.data && <LoadingScreen />}
+      {!loaded && <LoadingScreen />}
       <main className={styles.mainContainer}>
         <Logo />
         <LessonsFilters />

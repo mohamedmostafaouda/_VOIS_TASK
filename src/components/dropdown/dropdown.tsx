@@ -1,25 +1,23 @@
 import * as React from 'react';
 import styles from './styles/dropdown.scss';
 import DropdownArrow from 'assets/icons/dropdownArrow.svg';
+import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { FilterType } from '@types';
+import { changeFilter } from '@redux/actions/data';
 
-type Props<T> = {
+type Props = {
   label: string;
-  placeholder: string;
-  onChange: (selectedItem: T) => void;
-  data: Array<T>;
-  itemRenderer: (item: T) => string | number;
+  filterName: FilterType;
 };
 
-export const Dropdown = <T,>({
-  label,
-  placeholder,
-  onChange,
-  data,
-  itemRenderer,
-}: Props<T>): JSX.Element => {
+export const Dropdown = <T,>({ label, filterName }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = React.useState<T>();
   const ref = React.useRef<HTMLDivElement>(null);
+  const { data, filterValue }: { data: string[]; filterValue: string } = useAppSelector(
+    (state) => state.data[filterName]
+  );
+  
+  const dispatch = useAppDispatch();
 
   const handleClickOutside = (event: MouseEvent): void => {
     if (ref.current && !ref.current.contains(event.target as HTMLButtonElement)) {
@@ -34,13 +32,9 @@ export const Dropdown = <T,>({
     };
   }, []);
 
-  const handleChange = React.useCallback(
-    (item: T) => {
-      onChange(item);
-      setSelectedItem(item);
-    },
-    [setSelectedItem],
-  );
+  const handleChange = React.useCallback((item: string) => {
+    dispatch(changeFilter(item, filterName))
+  }, [dispatch]);
 
   return (
     <div>
@@ -48,16 +42,16 @@ export const Dropdown = <T,>({
 
       <div ref={ref} className={styles.dropdownSelectorContainer} onClick={() => setOpen(!open)}>
         <div className={styles.dropdownHeroItem}>
-          <span>{(selectedItem && itemRenderer(selectedItem)) ?? placeholder}</span>
+          <span>{filterValue}</span>
           <DropdownArrow className={styles.openedArrow} />
         </div>
 
         {open && (
           <div className={styles.optionsContainer}>
-            {data.map((item: T) => {
+            {data.map((item: string, index) => {
               return (
-                <div onClick={() => handleChange(item)} className={styles.option}>
-                  {itemRenderer(item)}
+                <div key={index} onClick={() => handleChange(item)} className={styles.option}>
+                  {item}
                 </div>
               );
             })}

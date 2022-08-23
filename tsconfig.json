@@ -15,7 +15,8 @@
       "@components": ["components/index.ts"],
       "@variables": ["styles/_variables.scss"],
       "@redux/*": ["redux/*"],
-      "@types": ["types.ts"]
+      "@types": ["types.ts"],
+      "@utils": ["utils/utils.ts"]
     }
   }
 }

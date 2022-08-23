@@ -3,22 +3,20 @@ import { initReactI18next } from 'react-i18next';
 import translationEN from './locales/en/en.json';
 import translationAR from './locales/ar/ar.json';
 
-i18n
-.use(initReactI18next)
-.init({
+i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
   resources: {
     en: {
-      translation: translationEN,
+      translation: translationEN
     },
     ar: {
-      translation: translationAR,
-    },
+      translation: translationAR
+    }
   },
   interpolation: {
-    escapeValue: false,
-  },
+    escapeValue: false
+  }
 });
 
 export default i18n;
