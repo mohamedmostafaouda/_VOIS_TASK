@@ -34,4 +34,10 @@ table.table {
     justify-content: center;
     width: 100%;
     height: 90vh;
+    color: var(--purple);
+}
+
+.pageContainer{
+    background-color: var(--gray);
+    height: 100vh;
 }

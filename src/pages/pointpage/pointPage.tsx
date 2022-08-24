@@ -5,6 +5,7 @@ import { useGetPointData } from 'hooks/useGetPointData';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './styles/pointPage.scss';
+import { Header } from '@components/header/header';
 
 export const PointPage = () => {
   const { loaded } = useFetchData();
@@ -48,8 +49,10 @@ export const PointPage = () => {
   const output = itemData ? table : notFound;
   return loaded ? (
     <>
-      <Logo />
-      <div className={styles.outputContainer}>{output}</div>
+      <div className={styles.pageContainer}>
+        <Header />
+        <div className={styles.outputContainer}>{output}</div>
+      </div>
     </>
   ) : (
     <LoadingScreen />
