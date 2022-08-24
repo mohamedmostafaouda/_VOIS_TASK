@@ -1,0 +1,32 @@
+@import '@variables';
+
+.toggleContainer {
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: var(--dark-gray) solid 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggleBullet {
+    background-color: var(--dark-gray);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+}
+
+.cardContainer {
+    display: flex;
+    gap: $secondary-spacing;
+    padding: $secondary-spacing 0rem;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

@@ -1,12 +1,4 @@
-import {
-  Action,
-  ActionTypes,
-  Data,
-  DataState,
-  Filter,
-  FilterActionTypes,
-  FilterType,
-} from '@types';
+import { Action, ActionTypes, Data, DataState, Filter, FilterActionTypes, FilterType, ToggleGraphTypes } from '@types';
 import { filterCamps, filterSchools } from '@utils';
 
 const initialFilterValue: Filter = {
@@ -20,9 +12,10 @@ const initialState: DataState = {
   [FilterType.CAMP_FILTER]: initialFilterValue,
   [FilterType.SCHOOL_FILTER]: initialFilterValue,
   loaded: false,
+  hiddenGraphs: [],
 };
 
-export const dataReducer = (state = initialState, action: any): DataState => {
+export const dataReducer = <T>(state = initialState, action: Action): DataState => {
   switch (action.type) {
     case ActionTypes.GET_DATA: {
       const data: Data[] = action.payload;
@@ -46,6 +39,7 @@ export const dataReducer = (state = initialState, action: any): DataState => {
         [FilterType.COUNTRY_FILTER]: defaultCountryFilter,
         [FilterType.CAMP_FILTER]: defaultCampFilter,
         [FilterType.SCHOOL_FILTER]: defaultSchoolFilter,
+        hiddenGraphs: [],
       };
     }
 
@@ -72,6 +66,7 @@ export const dataReducer = (state = initialState, action: any): DataState => {
         [FilterType.COUNTRY_FILTER]: countryFilter,
         [FilterType.CAMP_FILTER]: campFilter,
         [FilterType.SCHOOL_FILTER]: schoolFilter,
+        hiddenGraphs: [],
       };
     }
 
@@ -91,6 +86,7 @@ export const dataReducer = (state = initialState, action: any): DataState => {
         ...state,
         [FilterType.CAMP_FILTER]: campFilter,
         [FilterType.SCHOOL_FILTER]: schoolFilter,
+        hiddenGraphs: [],
       };
     }
 
@@ -101,7 +97,24 @@ export const dataReducer = (state = initialState, action: any): DataState => {
           ...state[FilterType.SCHOOL_FILTER],
           filterValue: action.payload,
         },
+        hiddenGraphs: [],
       };
+    }
+
+    case ToggleGraphTypes.SHOW_GRAPH: {
+      const hiddenGraphs = state.hiddenGraphs.filter(graph =>graph != action.payload);
+      return {
+        ...state,
+        hiddenGraphs
+      }
+    }
+
+    case ToggleGraphTypes.HIDE_GRAPH: {
+      const hiddenGraphs = [...state.hiddenGraphs, action.payload];
+      return {
+        ...state,
+        hiddenGraphs
+      }
     }
 
     default:

@@ -3,4 +3,7 @@
 .logo {
   font-size: $primary-text;
   color: var(--purple);
+  a{
+    text-decoration: none;
+  }
 }

@@ -10,13 +10,13 @@
 }
 
 @mixin dark {
-  --purple: #fff;
-  --white: #fff;
-  --gray: #fff;
-  --blue: blue;
-  --light-blue: blue;
-  --dark-blue: blue;
-  --red: red;
+  --purple: #ffffff;
+  --white: rgb(0, 0, 0);
+  --gray: rgb(38, 38, 38);
+  --blue: rgb(33, 33, 45);
+  --light-blue: rgb(255, 255, 255);
+  --dark-blue: rgb(86, 86, 191);
+  --red: rgb(91, 91, 91);
 }
 
 body {

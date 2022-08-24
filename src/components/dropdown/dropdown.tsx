@@ -10,7 +10,7 @@ type Props = {
   filterName: FilterType;
 };
 
-export const Dropdown = <T,>({ label, filterName }: Props): JSX.Element => {
+export const Dropdown = ({ label, filterName }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const { data, filterValue }: { data: string[]; filterValue: string } = useAppSelector(

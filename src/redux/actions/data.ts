@@ -1,5 +1,5 @@
 import API from 'api/api';
-import { Action, ActionTypes, AsyncAction, Data, FilterActionTypes, FilterType } from '@types';
+import { Action, ActionTypes, AsyncAction, Data, FilterActionTypes, FilterType, ToggleGraphTypes } from '@types';
 import { Dispatch } from 'redux';
 
 const api: API = new API();
@@ -17,9 +17,9 @@ export const getData = (): AsyncAction => {
 
 export const changeFilter = (
   filterValue: string,
-  FilterActionType: FilterType,
-): Action<string, FilterActionTypes> => {
-  switch(FilterActionType){
+  filterActionType: FilterType,
+): Action => {
+  switch(filterActionType){
     case FilterType.CAMP_FILTER:
       return {type: FilterActionTypes.CHANGE_CAMP, payload: filterValue};
     case FilterType.COUNTRY_FILTER:
@@ -29,7 +29,24 @@ export const changeFilter = (
   }
 }
 
-const getDataSuccess = (data: Data[]): Action<Data[], ActionTypes> => ({
+export const toggleGraph = (graphName: string, toggleGraphAction: ToggleGraphTypes):Action => {
+   switch(toggleGraphAction){
+    case ToggleGraphTypes.SHOW_GRAPH:{
+      return {
+        type: ToggleGraphTypes.SHOW_GRAPH,
+        payload: graphName
+      }
+    }
+    case ToggleGraphTypes.HIDE_GRAPH: {
+      return {
+        type: ToggleGraphTypes.HIDE_GRAPH,
+        payload: graphName
+      }
+    }
+   }
+}
+
+const getDataSuccess = (data: Data[]): Action => ({
   type: ActionTypes.GET_DATA,
   payload: [...data],
 });
