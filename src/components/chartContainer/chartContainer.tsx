@@ -13,8 +13,6 @@ export const ChartContainer = () => {
     (state) => state.data[FilterType.COUNTRY_FILTER].filterValue,
   );
 
-  
-
   const filteredOutput: FilterOutput = React.useMemo(
     () =>
       filterData(data, {

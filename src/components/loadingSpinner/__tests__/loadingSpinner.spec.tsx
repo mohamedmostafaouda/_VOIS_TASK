@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Test Case For Loading Spinner', () => {
   it('should render', () => {
     const wrapper = shallow(<LoadingSpinner />);
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeTruthy();
   });
 });

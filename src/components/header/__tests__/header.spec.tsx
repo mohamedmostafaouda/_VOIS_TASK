@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Test Case For Header', () => {
   it('should render', () => {
     const wrapper = shallow(<Header />);
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeTruthy();
   });
 });

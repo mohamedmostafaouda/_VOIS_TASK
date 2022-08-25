@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Test Case For Lessons Filters', () => {
   it('should render', () => {
     const wrapper = shallow(<LessonsFilters />);
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeTruthy();
   });
 });

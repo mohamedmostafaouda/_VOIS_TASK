@@ -7,12 +7,17 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Test Case For Lessons Legends', () => {
   it('should render', () => {
-    const wrapper = shallow(<LessonsLegends filteredOutput={{
-        totalLessons: 0,
-        campName: '',
-        schoolLessons: undefined,
-        schoolGraph: undefined
-    }} chartColors={[]} />);
-    expect(wrapper).toBeTruthy()
+    const wrapper = shallow(
+      <LessonsLegends
+        filteredOutput={{
+          totalLessons: 0,
+          campName: '',
+          schoolLessons: undefined,
+          schoolGraph: undefined,
+        }}
+        chartColors={[]}
+      />,
+    );
+    expect(wrapper).toBeTruthy();
   });
 });

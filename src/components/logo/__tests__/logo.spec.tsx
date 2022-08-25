@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Test Case For Logo', () => {
   it('should render', () => {
     const wrapper = shallow(<Logo />);
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeTruthy();
   });
 });

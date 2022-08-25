@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Test Case For Loading Screen', () => {
   it('should render', () => {
     const wrapper = shallow(<LoadingScreen />);
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeTruthy();
   });
 });
