@@ -56,7 +56,6 @@ module.exports = {
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
       filename: 'static/css/[name].[contenthash:8].chunk.css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
