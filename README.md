@@ -1,5 +1,6 @@
 
 # Analysis Chart
+[🌎 Live Version ](https://mohamedmostafaouda.github.io/_VOIS_TASK/)
 
 This project is for assignemt purposes only and all data is being fetched from this end point 
 
