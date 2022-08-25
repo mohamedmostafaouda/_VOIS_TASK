@@ -22,6 +22,16 @@ export enum Theme {
   DARK = 'DARK',
 }
 
+export enum Languages {
+  EN = 'EN',
+  AR = 'AR',
+}
+
+export enum Directions {
+  RTL = 'rtl',
+  LTR = 'ltr',
+}
+
 export enum FilterActionTypes {
   CHANGE_SCHOOL = 'CHANGE_SCHOOL',
   CHANGE_CAMP = 'CHANGE_CAMP',
@@ -52,10 +62,12 @@ export type Data = {
   lessons: number;
 };
 
-export type Action = {
+export type Action<T> = {
   type: FilterActionTypes | ActionTypes | ToggleGraphTypes;
-  payload: any;
+  payload: T;
 };
+
+export type AsyncAction = (dispatch: Dispatch) => Promise<void>;
 
 export type DataState = {
   data: Data[];
@@ -77,5 +89,3 @@ export type FilterOutput = {
   schoolLessons: Map<string, number>;
   schoolGraph: Map<string, Map<keyof Months, number>>;
 };
-
-export type AsyncAction = (dispatch: Dispatch) => Promise<void>;

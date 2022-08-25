@@ -8,29 +8,15 @@ import {
   Title,
   Tooltip,
   Legend,
+  InteractionItem,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import { Months } from '@types';
+import { getElementAtEvent, Line } from 'react-chartjs-2';
+import { FilterType, Months } from '@types';
 import { useAppSelector } from '@redux/hooks';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
-const options = {
-  maintainAspectRatio: false,
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: true,
-      text: 'NO of lessons',
-    },
-  },
-  animation: {
-    duration: 0,
-  },
-};
 
 const convertDataToMatchChartJS = (
   schoolGraph: Map<string, Map<keyof Months, number>>,
@@ -79,12 +65,53 @@ export const Chart = ({
   schoolGraph: Map<string, Map<keyof Months, number>>;
   chartColors: string[];
 }) => {
+  const chartRef = React.useRef(null);
+  const navigate = useNavigate();
   const hiddenGraphs = useAppSelector((state) => state.data.hiddenGraphs);
-  console.log(hiddenGraphs)
-  const test = convertDataToMatchChartJS(schoolGraph, chartColors, hiddenGraphs);
+  const countryFilter = useAppSelector(
+    (state) => state.data[FilterType.COUNTRY_FILTER].filterValue,
+  );
+  const campFilter = useAppSelector((state) => state.data[FilterType.CAMP_FILTER].filterValue);
+  const data = convertDataToMatchChartJS(schoolGraph, chartColors, hiddenGraphs);
+  const i18n = useTranslation();
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: i18n.t`NO of lessons`,
+      },
+    },
+    animation: {
+      duration: 0,
+    },
+  };
+
+  const printElementAtEvent = (element: InteractionItem[]) => {
+    if (!element.length) return;
+
+    const { datasetIndex, index } = element[0];
+    navigate(
+      `/point/${countryFilter}/${campFilter}/${data.datasets[datasetIndex].label}/${data.datasets[datasetIndex].data[index].x}`,
+    );
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const { current: chart } = chartRef;
+
+    if (!chart) {
+      return;
+    }
+    printElementAtEvent(getElementAtEvent(chart, event));
+  };
+
   return (
     <div style={{ width: '100%', height: '39rem' }}>
-      <Line options={options} data={test} />
+      <Line ref={chartRef} onClick={handleClick} options={options} data={data} />
     </div>
   );
 };

@@ -1,12 +1,15 @@
-import { useAppSelector } from "@redux/hooks"
-import { Data } from "@types";
+import { useAppSelector } from '@redux/hooks';
 
-export const useGetPointData = (country: string, camp:string, school: string):Data|undefined => {
-    const data = useAppSelector(state => state.data.data);
+export const useGetPointData = (country: string, camp: string, school: string, month: string) => {
+  const data = useAppSelector((state) => state.data.data);
+  const totalLessons = data.reduce((prev, curr) => {
+    return curr.school === school &&
+      curr.camp === camp &&
+      curr.country === country &&
+      curr.month == month
+      ? prev + curr.lessons
+      : prev;
+  }, 0);
 
-    const itemData:Data | undefined = data.find((item:Data)=>{
-        return (item.school === school && item.camp === camp && item.country === country)
-    })
-
-    return itemData;
-}
+  return { country, camp, school, month, totalLessons };
+};

@@ -1,45 +1,35 @@
-import { Logo } from '@components/logo/logo';
-import { LoadingScreen } from '@components/loadingScreen/loadingScreen';
+import { LoadingScreen, Header } from '@components';
 import { useFetchData } from 'hooks/useFetchData';
 import { useGetPointData } from 'hooks/useGetPointData';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './styles/pointPage.scss';
-import { Header } from '@components/header/header';
+import { useTranslation } from 'react-i18next';
 
 export const PointPage = () => {
   const { loaded } = useFetchData();
-  const { country, camp, school } = useParams();
-  const itemData = useGetPointData(country ?? '', camp ?? '', school ?? '');
+  const { country, camp, school, month } = useParams();
+  const itemData = useGetPointData(country ?? '', camp ?? '', school ?? '', month ?? '');
+  const i18n = useTranslation();
+
   const table = (
     <table className={styles.table}>
       <thead>
         <tr>
-          <th> Country Name </th>
-          <th> Camp Name </th>
-          <th> School Name</th>
+          <th> {i18n.t`Country Name`} </th>
+          <th> {i18n.t`Camp Name`} </th>
+          <th> {i18n.t`School Name`}</th>
+          <th> {i18n.t`Month`}</th>
+          <th> {i18n.t`Total Lessons`}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td> 80 cm </td>
-          <td> 60 cm </td>
-          <td> 220 cm </td>
-        </tr>
-        <tr>
-          <td> 70 cm </td>
-          <td> 65 cm </td>
-          <td> 80 cm </td>
-        </tr>
-        <tr>
-          <td> 16 kg </td>
-          <td> 22 kg </td>
-          <td> 31 kg </td>
-        </tr>
-        <tr>
-          <td> 120 cm </td>
-          <td> 92 cm </td>
-          <td> 80 cm </td>
+          <td> {itemData.country} </td>
+          <td> {itemData.camp} </td>
+          <td> {itemData.school} </td>
+          <td> {itemData.month} </td>
+          <td> {itemData.totalLessons} </td>
         </tr>
       </tbody>
     </table>

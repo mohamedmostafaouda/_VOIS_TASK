@@ -1,5 +1,4 @@
-import { LegendInfo } from '@components/schoolsLegend/legendInfo';
-import { SchoolsLegend } from '@components/schoolsLegend/schoolsLegend';
+import { LegendInfo, SchoolsLegend } from '@components';
 import { FilterOutput } from '@types';
 import * as React from 'react';
 import styles from './styles/lessonsLegends.scss';

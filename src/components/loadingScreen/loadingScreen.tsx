@@ -1,4 +1,4 @@
-import { LoadingSpinner } from '@components/loadingSpinner/loadingSpinner';
+import { LoadingSpinner } from '@components';
 import * as React from 'react';
 import styles from './styles/loadingScreen.scss';
 

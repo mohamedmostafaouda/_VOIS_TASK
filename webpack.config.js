@@ -57,11 +57,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
-      filename: 'static/css/[name].[contenthash:8].css',
+      filename: 'static/css/[name].[contenthash:8].chunk.css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
     new WebpackRTLPlugin({
       minify: true,
+      diffOnly: true,
     }),
   ],
 };

@@ -1,5 +1,14 @@
-import { Action, ActionTypes, Data, DataState, Filter, FilterActionTypes, FilterType, ToggleGraphTypes } from '@types';
+import {
+  ActionTypes,
+  Data,
+  DataState,
+  Filter,
+  FilterActionTypes,
+  FilterType,
+  ToggleGraphTypes,
+} from '@types';
 import { filterCamps, filterSchools } from '@utils';
+import { AnyAction } from 'redux';
 
 const initialFilterValue: Filter = {
   data: [],
@@ -15,7 +24,7 @@ const initialState: DataState = {
   hiddenGraphs: [],
 };
 
-export const dataReducer = <T>(state = initialState, action: Action): DataState => {
+export const dataReducer = (state = initialState, action: AnyAction): DataState => {
   switch (action.type) {
     case ActionTypes.GET_DATA: {
       const data: Data[] = action.payload;
@@ -102,19 +111,19 @@ export const dataReducer = <T>(state = initialState, action: Action): DataState 
     }
 
     case ToggleGraphTypes.SHOW_GRAPH: {
-      const hiddenGraphs = state.hiddenGraphs.filter(graph =>graph != action.payload);
+      const hiddenGraphs = state.hiddenGraphs.filter((graph) => graph != action.payload);
       return {
         ...state,
-        hiddenGraphs
-      }
+        hiddenGraphs,
+      };
     }
 
     case ToggleGraphTypes.HIDE_GRAPH: {
       const hiddenGraphs = [...state.hiddenGraphs, action.payload];
       return {
         ...state,
-        hiddenGraphs
-      }
+        hiddenGraphs,
+      };
     }
 
     default:

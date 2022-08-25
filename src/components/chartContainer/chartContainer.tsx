@@ -1,5 +1,4 @@
-import { Chart } from '@components/chart/chart';
-import { LessonsLegends } from '@components/lessonsLegends/lessonsLegends';
+import { LessonsLegends, Chart } from '@components';
 import { useAppSelector } from '@redux/hooks';
 import { FilterOutput, FilterType } from '@types';
 import { filterData } from '@utils';
@@ -27,7 +26,7 @@ export const ChartContainer = () => {
   );
 
   return (
-    <div>
+    <div className={styles.topContainer}>
       <div className={styles.bottomSideContainer}>
         <div className={styles.chartContainer}>
           <Chart schoolGraph={filteredOutput.schoolGraph} chartColors={chartColors} />

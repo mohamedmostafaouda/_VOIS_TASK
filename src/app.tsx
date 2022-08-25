@@ -1,5 +1,3 @@
-import { LessonsFilters } from '@components/lessonsFilters/lessonsFilters';
-import { Logo } from '@components/logo/logo';
 import { MainPage } from 'pages/mainPage/mainPage';
 import { PointPage } from 'pages/pointpage/pointPage';
 import * as React from 'react';
@@ -10,7 +8,7 @@ const App = (): JSX.Element => {
     <>
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path='point/:country/:camp/:school' element={<PointPage />} />
+        <Route path='point/:country/:camp/:school/:month' element={<PointPage />} />
       </Routes>
     </>
   );

@@ -51,6 +51,10 @@ $dropdown-border-size: 0.1rem;
   align-items: center;
 }
 
-.openedArrow {
+body .openedArrow {
   transform: rotate(-270deg);
+}
+
+body[dir='rtl'] .openedArrow {
+  transform: rotate(270deg);
 }

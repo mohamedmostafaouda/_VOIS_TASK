@@ -1,11 +1,15 @@
 .bottomSideContainer {
-    display: flex;
+  display: flex;
 }
 
 .chartContainer {
-    flex: 1 1 0;
+  flex: 1 1 0;
 }
 
 .lessonsLegendsContainer {
-    width: 22rem;
+  width: 22rem;
+}
+
+.topContainer {
+  max-height: 0px;
 }
