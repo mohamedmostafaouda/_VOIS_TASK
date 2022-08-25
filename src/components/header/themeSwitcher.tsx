@@ -20,15 +20,15 @@ export const ThemeSwitcher = () => {
     }
     setTheme({ ...theme, currentTheme: nextTheme });
   };
-  
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     if (theme.preferredTheme === Theme.DARK && theme.currentTheme === Theme.LIGHT) {
-        document.body.classList.add(themes.light);
-      }
-      if (theme.preferredTheme === Theme.LIGHT && theme.currentTheme === Theme.DARK) {
-        document.body.classList.add(themes.dark);
-      }
-  }, [])
+      document.body.classList.add(themes.light);
+    }
+    if (theme.preferredTheme === Theme.LIGHT && theme.currentTheme === Theme.DARK) {
+      document.body.classList.add(themes.dark);
+    }
+  }, []);
 
   return (
     <button

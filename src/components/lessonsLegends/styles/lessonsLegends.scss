@@ -1,26 +1,26 @@
 @import '@variables';
 
 .totalTitle {
-    font-size: $primary-text;
-    font-weight: bold;
+  font-size: $primary-text;
+  font-weight: bold;
 }
 
 .totalTitleContainer {
-    color: var(--dark-gray);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  color: var(--dark-gray);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.campNameTitle{
-    color: var(--dark-gray);
-    font-size: $small-text;
+.campNameTitle {
+  color: var(--dark-gray);
+  font-size: $small-text;
 }
 
-.legendsContainer{
-    padding: 3rem;
+.legendsContainer {
+  padding: 3rem;
 }
 
-.schoolsLegendContainer{
-    margin-top: $primary-spacing;
+.schoolsLegendContainer {
+  margin-top: $primary-spacing;
 }

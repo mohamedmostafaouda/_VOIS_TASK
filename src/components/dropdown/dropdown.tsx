@@ -14,9 +14,9 @@ export const Dropdown = ({ label, filterName }: Props): JSX.Element => {
   const [open, setOpen] = React.useState<boolean>(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const { data, filterValue }: { data: string[]; filterValue: string } = useAppSelector(
-    (state) => state.data[filterName]
+    (state) => state.data[filterName],
   );
-  
+
   const dispatch = useAppDispatch();
 
   const handleClickOutside = (event: MouseEvent): void => {
@@ -32,9 +32,12 @@ export const Dropdown = ({ label, filterName }: Props): JSX.Element => {
     };
   }, []);
 
-  const handleChange = React.useCallback((item: string) => {
-    dispatch(changeFilter(item, filterName))
-  }, [dispatch]);
+  const handleChange = React.useCallback(
+    (item: string) => {
+      dispatch(changeFilter(item, filterName));
+    },
+    [dispatch],
+  );
 
   return (
     <div>

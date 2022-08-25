@@ -1,8 +1,9 @@
+@import '@variables';
+
 .mainContainer {
   overflow: auto;
   background-color: var(--gray);
   width: 100%;
   height: 100vh;
-  padding: 1rem 2rem;
+  padding: $primary-spacing;
 }
-
