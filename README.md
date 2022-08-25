@@ -3,7 +3,7 @@
 
 This project is for assignemt purposes only and all data is being fetched from this end point 
 
-```http
+```
   https://raw.githubusercontent.com/abdelrhman-arnos/analysis-fe-challenge/master/data.json
 ```
 
