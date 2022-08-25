@@ -2,6 +2,8 @@ import { Dispatch } from 'redux';
 
 export const ShowAllSchools = 'Show All';
 
+export const chartColors = ['#e8707d', '#8a5ea9', '#3ca6db', '#385e77', '#24a408'];
+
 export enum Months {
   JAN = 'Jan',
   FEB = 'Feb',

@@ -1,6 +1,6 @@
 import { LessonsLegends, Chart } from '@components';
 import { useAppSelector } from '@redux/hooks';
-import { FilterOutput, FilterType } from '@types';
+import { chartColors, FilterOutput, FilterType } from '@types';
 import { filterData } from '@utils';
 import * as React from 'react';
 import styles from './styles/chartContainer.scss';
@@ -13,7 +13,7 @@ export const ChartContainer = () => {
     (state) => state.data[FilterType.COUNTRY_FILTER].filterValue,
   );
 
-  const chartColors = ['#e8707d', '#8a5ea9', '#3ca6db', '#385e77', '#24a408'];
+  
 
   const filteredOutput: FilterOutput = React.useMemo(
     () =>
